@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom"
+import { useContextProducts } from "../../Hooks/useContextProducts"
 
 function NavBar() {
+    const {contextProducts} = useContextProducts();
 
     const activeStyle = "underline underline-offset-4"
+
   return (
     <nav className="flex justify-between items-center fix top-0 z-10 w-full py-5 px-8 text-sm font-light" >
         <ul className="flex items-center gap-3">
@@ -99,7 +102,7 @@ function NavBar() {
                 </NavLink>
             </li>
             <li>
-            🛒0
+            🛒{contextProducts.count}
             </li>
         </ul>
     </nav>
