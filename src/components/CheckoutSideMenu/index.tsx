@@ -1,13 +1,13 @@
 import React from 'react'
-import styles from "./ProductDetail.module.css"
+import styles from "./CheckoutSideMenu.module.css"
 import { useContextProducts } from '../../Hooks/useContextProducts'
 import { ProductProps } from '../../interfaces/Product'
 
-interface ProductDetailProps extends ProductProps {
+interface CheckoutSideMenu extends ProductProps {
   
 }
 
-function ProductDetail( {title, id, category, price, description, image}:ProductDetailProps) {
+function CheckoutSideMenu( {title, id, category, price, description, image}:CheckoutSideMenu) {
 
     const{setIsProductDetailOpen, productToShow}=useContextProducts()
 
@@ -20,7 +20,7 @@ function ProductDetail( {title, id, category, price, description, image}:Product
     <aside className={`${styles.product_detail} flex flex-col fixed right-0 border border-black rounded-lg bg-white`}>
         <div className='flex justify-between items-center p-1'>
             <h2 className='font-medium text-xl'>
-                Details
+                My Order
             </h2> 
 
             <div className='cursor-pointer'onClick={onClose}>
@@ -49,4 +49,4 @@ function ProductDetail( {title, id, category, price, description, image}:Product
   )
 }
 
-export default ProductDetail
+export default CheckoutSideMenu

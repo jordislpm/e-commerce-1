@@ -11,22 +11,24 @@ export function useContextProducts() {
     const { value,
         count,
         setCount,
-        shoppingCard,
-        setShoppingCard,
+        shoppingCart,
+        setShoppingCart,
         isProductDetailOpen,
         setIsProductDetailOpen,
         productToShow,
-        setProductToShow,}= contextProducts;
+        setProductToShow,
+        addProductToCart,}= contextProducts;
 
 
 
     return {value,
         count,
-    setCount,
-    shoppingCard,
-    setShoppingCard,
-    isProductDetailOpen,
-    setIsProductDetailOpen,
-    productToShow,
-    setProductToShow,};
+        setCount,
+        shoppingCart,
+        setShoppingCart,
+        isProductDetailOpen,
+        setIsProductDetailOpen,
+        productToShow,
+        setProductToShow,
+        addProductToCart,};
   }

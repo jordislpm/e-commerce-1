@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <Layout>
-      <div className="grid gap-3 grid-cols-4 w-full max-w-screen-lg">
+      <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
           {data?.map((product) => (
         <Card 
         product={product}
