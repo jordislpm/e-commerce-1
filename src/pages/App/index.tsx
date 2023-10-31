@@ -7,6 +7,9 @@ import NotFound from '../NotFound'
 import Signin from '../Signin'
 import './App.css'
 import NavBar from "../../components/NavBar"
+import CheckoutSideMenu from "../../components/CheckoutSideMenu"
+import { useContextProducts } from "../../Hooks/useContextProducts"
+
 
 
 const AppRoutes =()=>{
@@ -23,10 +26,12 @@ const AppRoutes =()=>{
 }
 
 function App() {
+  const {isCheckoutSideMenuOpen}= useContextProducts()
    return (
       <BrowserRouter>
           <NavBar/>
           <AppRoutes/>
+          {isCheckoutSideMenuOpen && <CheckoutSideMenu/>}
       </BrowserRouter>
 
    

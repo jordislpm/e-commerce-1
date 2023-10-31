@@ -5,13 +5,14 @@ import { API_PlATZI_URL, API_FAKESTORE_URL } from "../../config/constants"
 import { useDataApiFakeStore } from "../../Hooks/useDataApiFakeStore"
 import ProductDetail from "../../components/ProductDetail"
 import { useContextProducts } from "../../Hooks/useContextProducts"
+import CheckoutSideMenu from "../../components/CheckoutSideMenu"
 
 
 
 const Home = () => {
 
     const { data, isLoading, error } = useDataApiFakeStore(`${API_FAKESTORE_URL}/products`)
-    const {isProductDetailOpen}=useContextProducts()
+    const {isProductDetailOpen, isCheckoutSideMenuOpen}=useContextProducts()
 
   return (
     <Layout>

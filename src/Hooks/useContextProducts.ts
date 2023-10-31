@@ -17,7 +17,10 @@ export function useContextProducts() {
         setIsProductDetailOpen,
         productToShow,
         setProductToShow,
-        addProductToCart,}= contextProducts;
+        addProductToCart,
+        isCheckoutSideMenuOpen,
+        setIsCheckoutSideMenuOpen,
+      }= contextProducts;
 
 
 
@@ -30,5 +33,8 @@ export function useContextProducts() {
         setIsProductDetailOpen,
         productToShow,
         setProductToShow,
-        addProductToCart,};
+        addProductToCart,
+        isCheckoutSideMenuOpen,
+        setIsCheckoutSideMenuOpen,
+      };
   }

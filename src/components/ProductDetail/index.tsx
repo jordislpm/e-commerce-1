@@ -9,11 +9,12 @@ interface ProductDetailProps extends ProductProps {
 
 function ProductDetail( {title, id, category, price, description, image}:ProductDetailProps) {
 
-    const{setIsProductDetailOpen, productToShow}=useContextProducts()
+    const{setIsProductDetailOpen, setIsCheckoutSideMenuOpen, productToShow}=useContextProducts()
 
 
     const onClose = ()=>{
         setIsProductDetailOpen(false)
+        setIsCheckoutSideMenuOpen(false)
     }
 
    return (

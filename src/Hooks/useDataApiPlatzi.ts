@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ProductPlatziProps, ProductProps } from '../interfaces/Product';
+import { validateImage } from '../services/validateImage';
 
   
 export function useDataApiPlatzi(url: string) {
@@ -8,7 +9,6 @@ export function useDataApiPlatzi(url: string) {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   // const [data,setData]= useState<null|ProductProps[]>(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -31,8 +31,15 @@ export function useDataApiPlatzi(url: string) {
 
   let data = null;
 
+
+
   if(dataPlatzi){
+
+
+
     data = dataPlatzi?.map((product)=>{
+
+ 
       const productMap:ProductProps = {
         id:product.id,
         title:product.title,

@@ -13,6 +13,8 @@ interface MyData {
   productToShow:null|ProductProps;
   setProductToShow:React.Dispatch<React.SetStateAction<null|ProductProps>>
   addProductToCart: (product:ProductProps)=> void;
+  isCheckoutSideMenuOpen:boolean;
+  setIsCheckoutSideMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const MyContext = createContext<MyData | undefined>(undefined);
@@ -26,8 +28,13 @@ const [count, setCount] = useState<number>(0)
 const [shoppingCart, setShoppingCart] = useState<null|ProductProps[]>(null)
 //product Detail  open/close  
 const [isProductDetailOpen, setIsProductDetailOpen]= useState<boolean>(false)
+//checkout side menu open/close  
+const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen]= useState<boolean>(false)
 //product Detail show Product
 const [productToShow, setProductToShow]= useState<null|ProductProps>(null)
+
+
+
 
 
 
@@ -41,7 +48,6 @@ const addProductToCart = (product:ProductProps)=>{
         setShoppingCart([product])
     }
 setCount(count + 1)
-console.log(shoppingCart)
 
 }
 
@@ -58,6 +64,8 @@ console.log(shoppingCart)
     productToShow,
     setProductToShow,
     addProductToCart,
+    isCheckoutSideMenuOpen,
+    setIsCheckoutSideMenuOpen,
     // Inicializa otras propiedades según tus necesidades
   };
 

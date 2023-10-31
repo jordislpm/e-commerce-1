@@ -9,16 +9,25 @@ interface CardInfo extends ProductProps{
 function Card({product, title, id, category, price, description, image}:CardInfo) {
 
   
-    const {addProductToCart, setIsProductDetailOpen, setProductToShow}= useContextProducts()
+    const {
+        setIsCheckoutSideMenuOpen,
+        isCheckoutSideMenuOpen ,
+        addProductToCart, 
+        setIsProductDetailOpen, 
+        setProductToShow,
+    }= useContextProducts()
 
     const addProduct = (e: React.MouseEvent, product:ProductProps)=>{
         e.stopPropagation()
         addProductToCart(product)
+        setIsCheckoutSideMenuOpen(true)
+        setIsProductDetailOpen(false);
     }
 
     const onDetail = ()=>{
-        setIsProductDetailOpen(true);
         setProductToShow(product)
+        setIsCheckoutSideMenuOpen(false)
+        setIsProductDetailOpen(true);
     }
 
     const cutTitle = title && title.length > 30 ? title.split(" ").slice(0, 5).join(" ") + ' ...' : title;
