@@ -23,4 +23,9 @@ export interface CategoryProductPlatzi {
     image: string;
 }
 
-
+export interface  orderProducts {
+    date: string;
+    products: ProductProps[],
+    totalProducts: number,
+    totalPrice:number
+}

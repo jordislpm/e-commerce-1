@@ -21,6 +21,8 @@ export function useContextProducts() {
         deleteProductToCart,
         isCheckoutSideMenuOpen,
         setIsCheckoutSideMenuOpen,
+        order,
+        setOrder,
       }= contextProducts;
 
 
@@ -38,5 +40,7 @@ export function useContextProducts() {
         deleteProductToCart,
         isCheckoutSideMenuOpen,
         setIsCheckoutSideMenuOpen,
+        order,
+        setOrder,
       };
   }

@@ -1,13 +1,13 @@
 import React, { createContext,useState, ReactNode } from 'react';
-import { ProductProps } from '../../interfaces/Product';
+import { ProductProps, orderProducts } from '../../interfaces/Product';
 
 // Define la estructura de los datos que se compartirán
 interface MyData {
   value: string;
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
-  shoppingCart: null| ProductProps[];
-  setShoppingCart: React.Dispatch<React.SetStateAction<null| ProductProps[]>>;
+  shoppingCart: ProductProps[];
+  setShoppingCart: React.Dispatch<React.SetStateAction<ProductProps[]>>;
   isProductDetailOpen: boolean;
   setIsProductDetailOpen: React.Dispatch<React.SetStateAction<boolean>>;
   productToShow:null|ProductProps;
@@ -16,6 +16,8 @@ interface MyData {
   deleteProductToCart:  (id: number)=> void;
   isCheckoutSideMenuOpen:boolean;
   setIsCheckoutSideMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  order: orderProducts[];
+  setOrder: React.Dispatch<React.SetStateAction<orderProducts[]>>;
 }
 
 export const MyContext = createContext<MyData | undefined>(undefined);
@@ -26,13 +28,17 @@ export function MyContextProductProvider({ children }: { children: ReactNode }) 
 //shopping Cart Lenght
 const [count, setCount] = useState<number>(0)
 // shoping cart    
-const [shoppingCart, setShoppingCart] = useState<null|ProductProps[]>(null)
+const [shoppingCart, setShoppingCart] = useState<ProductProps[]>([])
 //product Detail  open/close  
 const [isProductDetailOpen, setIsProductDetailOpen]= useState<boolean>(false)
 //checkout side menu open/close  
 const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen]= useState<boolean>(false)
 //product Detail show Product
 const [productToShow, setProductToShow]= useState<null|ProductProps>(null)
+
+//shopping cart Order
+
+const [order, setOrder]= useState<orderProducts[]>([])
 
 
 
@@ -61,12 +67,7 @@ const deleteProductToCart = (id: number)=>{
      
    const temporalCart = shoppingCart.filter(item => item.id != id)
    setShoppingCart(temporalCart)
-
- console.log(shoppingCart)
-      
-     console.log(shoppingCart.length)
   setCount(count - 1)
-  console.log(temporalCart)
 
 }
 }
@@ -86,6 +87,8 @@ const deleteProductToCart = (id: number)=>{
     deleteProductToCart,
     isCheckoutSideMenuOpen,
     setIsCheckoutSideMenuOpen,
+    order,
+    setOrder,
     // Inicializa otras propiedades según tus necesidades
   };
 
