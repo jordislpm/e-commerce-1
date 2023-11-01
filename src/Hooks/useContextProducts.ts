@@ -18,6 +18,7 @@ export function useContextProducts() {
         productToShow,
         setProductToShow,
         addProductToCart,
+        deleteProductToCart,
         isCheckoutSideMenuOpen,
         setIsCheckoutSideMenuOpen,
       }= contextProducts;
@@ -34,6 +35,7 @@ export function useContextProducts() {
         productToShow,
         setProductToShow,
         addProductToCart,
+        deleteProductToCart,
         isCheckoutSideMenuOpen,
         setIsCheckoutSideMenuOpen,
       };
