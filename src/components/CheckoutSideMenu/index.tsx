@@ -3,7 +3,7 @@ import styles from "./CheckoutSideMenu.module.css"
 import { useContextProducts } from '../../Hooks/useContextProducts'
 import { ProductProps, orderProducts } from '../../interfaces/Product'
 import OrderCart from '../OrderCart'
-import { totalPrice } from '../../services/totalprice'
+import { totalPrice } from '../../services/totalPrice'
 
 interface CheckoutSideMenu extends ProductProps {
 

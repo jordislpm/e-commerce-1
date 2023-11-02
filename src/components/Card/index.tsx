@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { ProductProps } from '../../interfaces/Product'
 import { useContextProducts } from '../../Hooks/useContextProducts'
 import closeIcon from "../../../public/icons/closeIcon.svg"
+import { checkIfIncluded } from '../../services/checkIfIncluded'
 
 interface CardInfo extends ProductProps{
     product:ProductProps
@@ -36,7 +37,7 @@ function Card({product, title, id, category, price, description, image}:CardInfo
             setIsCheckoutSideMenuOpen(true)
             setIsProductDetailOpen(false);
             setIsInCart(true)
-        }
+                  }
          }
 
     const onDetail = ()=>{
@@ -49,7 +50,16 @@ function Card({product, title, id, category, price, description, image}:CardInfo
 
 //efetcs
 
+useEffect(()=>{
+    
+    if (id){
+        const validate = checkIfIncluded(id, shoppingCart)
+        if (!validate){
+            setIsInCart(false)
+        } 
 
+    }
+},[shoppingCart, id])
 
 
   return (

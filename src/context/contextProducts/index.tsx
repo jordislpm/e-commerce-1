@@ -18,6 +18,7 @@ interface MyData {
   setIsCheckoutSideMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   order: orderProducts[];
   setOrder: React.Dispatch<React.SetStateAction<orderProducts[]>>;
+
 }
 
 export const MyContext = createContext<MyData | undefined>(undefined);
@@ -71,6 +72,8 @@ const deleteProductToCart = (id: number)=>{
 
 }
 }
+
+
 
 
   const data: MyData = {
