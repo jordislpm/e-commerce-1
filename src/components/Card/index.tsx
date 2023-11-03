@@ -3,6 +3,8 @@ import { ProductProps } from '../../interfaces/Product'
 import { useContextProducts } from '../../Hooks/useContextProducts'
 import closeIcon from "../../../public/icons/closeIcon.svg"
 import { checkIfIncluded } from '../../services/checkIfIncluded'
+import ButtonAddToCart from '../ButtonAddToCart'
+
 
 interface CardInfo extends ProductProps{
     product:ProductProps
@@ -24,23 +26,7 @@ function Card({product, title, id, category, price, description, image}:CardInfo
 
 
 
-    const addProduct = (e: React.MouseEvent, product:ProductProps)=>{
-        e.stopPropagation()
-        let isInCart : boolean | undefined = undefined;
-        if(shoppingCart){
-            isInCart = shoppingCart?.filter(item => item.id === product.id).length > 0
-        }
-        if(isInCart){
-           return
-        } else{
-            addProductToCart(product)
-            setIsCheckoutSideMenuOpen(true)
-            setIsProductDetailOpen(false);
-            setIsInCart(true)
-                  }
-         }
-
-    const onDetail = ()=>{
+   const onDetail = ()=>{
         setProductToShow(product)
         setIsCheckoutSideMenuOpen(false)
         setIsProductDetailOpen(true);
@@ -50,6 +36,7 @@ function Card({product, title, id, category, price, description, image}:CardInfo
 
 //efetcs
 
+
 useEffect(()=>{
     
     if (id){
@@ -57,7 +44,6 @@ useEffect(()=>{
         if (!validate){
             setIsInCart(false)
         } 
-
     }
 },[shoppingCart, id])
 
@@ -70,20 +56,10 @@ useEffect(()=>{
             </span>
             <img className='w-full h-full object-cover rounded-lg' src={image} alt={title}/>
             <div 
-            className={`absolute top-0 right-0 flex justify-center items-center ${isInCart ? "bg-amazonGreen cursor-auto" : " bg-amazonOrange"} w-6 h-6 rounded-full m-2 p-1 z-1`}
-            onClick={(e)=>{addProduct(e,product)}}
+            className={`absolute top-0 right-0 flex `}
+    
             >
-                {isInCart?
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-              </svg>
-              
-                :
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-                }
-               
+                  <ButtonAddToCart product={product} buttonIcon={true}/>
             </div>
         </figure>
         <p className='flex justify-between'>

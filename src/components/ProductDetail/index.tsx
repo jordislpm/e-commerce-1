@@ -2,12 +2,13 @@ import React from 'react'
 import styles from "./ProductDetail.module.css"
 import { useContextProducts } from '../../Hooks/useContextProducts'
 import { ProductProps } from '../../interfaces/Product'
+import ButtonAddToCart from '../ButtonAddToCart'
 
 interface ProductDetailProps extends ProductProps {
-  
+  product?: ProductDetailProps
 }
 
-function ProductDetail( {title, id, category, price, description, image}:ProductDetailProps) {
+function ProductDetail( {product}:ProductDetailProps) {
 
     const{setIsProductDetailOpen, setIsCheckoutSideMenuOpen, productToShow}=useContextProducts()
 
@@ -18,15 +19,15 @@ function ProductDetail( {title, id, category, price, description, image}:Product
     }
 
    return (
-    <aside className={`${styles.product_detail} flex flex-col fixed right-0 border border-black rounded-lg bg-white`}>
+    <aside className={`${styles.product_detail} flex flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-scroll`}>
         <div className='flex justify-between items-center p-1'>
             <h2 className='font-medium text-xl'>
                 Details
             </h2> 
 
             <div onClick={onClose}>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 'cursor-pointer'">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 cursor-pointer">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </div>
         </div>
@@ -46,6 +47,10 @@ function ProductDetail( {title, id, category, price, description, image}:Product
                    {productToShow?.description} 
                 </span>
             </p>
+            {productToShow && 
+             <ButtonAddToCart product={productToShow} buttonText={true}/>
+            }
+           
     </aside>
   )
 }
