@@ -6,6 +6,8 @@ interface MyData {
   value: string;
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
+  globalData: ProductProps[];
+  setGlobalData: React.Dispatch<React.SetStateAction<ProductProps[]>>;
   shoppingCart: ProductProps[];
   setShoppingCart: React.Dispatch<React.SetStateAction<ProductProps[]>>;
   isProductDetailOpen: boolean;
@@ -25,6 +27,10 @@ export const MyContext = createContext<MyData | undefined>(undefined);
 
 
 export function MyContextProductProvider({ children }: { children: ReactNode }) {
+
+// products data
+
+const [globalData, setGlobalData] = useState<ProductProps[]>([])
 
 //shopping Cart Lenght
 const [count, setCount] = useState<number>(0)
@@ -92,6 +98,8 @@ const deleteProductToCart = (id: number)=>{
     setIsCheckoutSideMenuOpen,
     order,
     setOrder,
+    globalData,
+    setGlobalData,
     // Inicializa otras propiedades según tus necesidades
   };
 

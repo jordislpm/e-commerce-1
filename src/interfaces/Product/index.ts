@@ -7,6 +7,14 @@ export interface ProductProps {
     image?:      string;
 }
 
+export interface ProductPlatziPropsSecond {
+    id:          number;
+    title:       string;
+    price:       number;
+    description: string;
+    category:    CategoryProductPlatzi;
+    image:      string;
+}
 
 export interface ProductPlatziProps {
     id:          number;
@@ -21,6 +29,8 @@ export interface CategoryProductPlatzi {
     id:    number;
     name:  string;
     image: string;
+    creationAt?: string;
+    updatedAt?: string;
 }
 
 export interface  orderProducts {

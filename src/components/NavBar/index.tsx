@@ -52,6 +52,15 @@ function NavBar() {
             </li>
             <li className="text-white">
                 <NavLink 
+                to="/jewelery"
+                className={({isActive})=>
+                isActive ? activeStyle : undefined
+                }>
+                      Jewelery
+                </NavLink>
+            </li>
+            <li className="text-white">
+                <NavLink 
                 to="/furnitures"
                 className={({isActive})=>
                 isActive ? activeStyle : undefined

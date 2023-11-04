@@ -23,6 +23,8 @@ export function useContextProducts() {
         setIsCheckoutSideMenuOpen,
         order,
         setOrder,
+        globalData,
+        setGlobalData,
       }= contextProducts;
 
 
@@ -42,5 +44,7 @@ export function useContextProducts() {
         setIsCheckoutSideMenuOpen,
         order,
         setOrder,
+        globalData,
+        setGlobalData,
       };
   }
