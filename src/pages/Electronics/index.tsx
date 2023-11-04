@@ -18,7 +18,7 @@ function Electronics() {
 
    const dataElectronics = globalData.filter((product)=>{
 
-        if (product.category?.toLowerCase() === "electronics" 
+        if (product.category?.indexOf("electronic") !== -1  
     
         ){
             return true

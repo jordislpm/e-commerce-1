@@ -41,7 +41,6 @@ function OrderCart({id,price,image,title, product}:OrderCartProps) {
             </svg>
             </div>
         </div>
-    
     </div>
   )
 }

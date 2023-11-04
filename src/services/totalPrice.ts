@@ -12,5 +12,5 @@ interface totalPriceParameter extends ProductProps{
 
 export const totalPrice = (products: ProductProps[])=>{
     const suma: number = products.reduce((total, producto) => total + (producto.price ?? 0), 0);
-    return suma;
+    return suma ;
 }

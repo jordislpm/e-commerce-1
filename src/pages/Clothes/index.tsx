@@ -17,10 +17,10 @@ function Clothes() {
     }=useContextProducts()
 
    const dataClothes = globalData.filter((product)=>{
-
-        if (product.category?.toLowerCase() === "clothes" 
-        || product.category?.toLowerCase() === "men's clothing"
-        || product.category?.toLowerCase() === "women's clothing"
+    
+        if (product.category?.indexOf("clothe") !== -1
+        || product.category?.indexOf("men's clothing") !== -1
+        || product.category?.indexOf("women's clothing") !== -1
         ){
             return true
         }

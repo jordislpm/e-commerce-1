@@ -18,8 +18,8 @@ function Furnitures() {
 
    const dataFurnitures = globalData.filter((product)=>{
 
-        if (product.category?.toLowerCase() === "furnitures" ||
-        product.category?.toLowerCase() === "furniture"
+        if (product.category?.indexOf("furniture") !== -1
+
         ){
             return true
         }

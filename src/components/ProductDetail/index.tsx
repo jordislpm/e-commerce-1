@@ -19,7 +19,7 @@ function ProductDetail( {product}:ProductDetailProps) {
     }
 
    return (
-    <aside className={`${styles.product_detail} flex flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-scroll`}>
+    <aside className={`${styles.product_detail} flex flex-col fixed right-0 border border-black rounded-lg bg-white`}>
         <div className='flex justify-between items-center p-1'>
             <h2 className='font-medium text-xl'>
                 Details
@@ -42,9 +42,11 @@ function ProductDetail( {product}:ProductDetailProps) {
                 </span>
                 <span className='font-medium text-md'>
                    {productToShow?.title} 
-                </span>
+                </span>                    
+            </p>
+            <p className='flex flex-col p-2 overflow-y-scroll'>
                 <span className='font-light text-sm'>
-                   {productToShow?.description} 
+                        {productToShow?.description} 
                 </span>
             </p>
             {productToShow && 

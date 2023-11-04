@@ -19,8 +19,7 @@ function Toys() {
    const dataToys = globalData.filter((product)=>{
 
      
-        if (product.category?.toLowerCase() === "toys" || 
-        product.category?.toLowerCase() === "toy"){
+        if (product.category?.indexOf("toy") !== -1 ){
             return true
         }
     })
