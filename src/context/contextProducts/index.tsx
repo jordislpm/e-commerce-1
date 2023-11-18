@@ -1,13 +1,13 @@
 import React, { createContext,useState, ReactNode } from 'react';
-import { ProductProps, orderProducts } from '../../interfaces/Product';
+import { ProductProps, orderProducts, DataProps } from '../../interfaces/Product';
 
 // Define la estructura de los datos que se compartirán
 interface MyData {
   value: string;
   count: number;
   setCount: React.Dispatch<React.SetStateAction<number>>;
-  globalData: ProductProps[];
-  setGlobalData: React.Dispatch<React.SetStateAction<ProductProps[]>>;
+  globalData: DataProps;
+  setGlobalData: React.Dispatch<React.SetStateAction<DataProps>>;
   shoppingCart: ProductProps[];
   setShoppingCart: React.Dispatch<React.SetStateAction<ProductProps[]>>;
   isProductDetailOpen: boolean;
@@ -30,7 +30,11 @@ export function MyContextProductProvider({ children }: { children: ReactNode }) 
 
 // products data
 
-const [globalData, setGlobalData] = useState<ProductProps[]>([])
+const [globalData, setGlobalData] = useState<DataProps>({
+  data: [],
+  isLoading: false,
+  error: null
+})
 
 //shopping Cart Lenght
 const [count, setCount] = useState<number>(0)

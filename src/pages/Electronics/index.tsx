@@ -5,6 +5,8 @@ import { useContextProducts } from "../../Hooks/useContextProducts"
 import { useEffect, useState } from "react"
 import { ProductProps } from "../../interfaces/Product"
 import EmptyCategory from "../../components/EmptyCategory"
+import ErrorComponent from "../../components/ErrorComponent"
+import LoadingComponent from "../../components/LoadingComponent"
 
  
 function Electronics() {
@@ -16,7 +18,7 @@ function Electronics() {
         setGlobalData
     }=useContextProducts()
 
-   const dataElectronics = globalData.filter((product)=>{
+   const dataElectronics = globalData?.data?.filter((product)=>{
 
         if (product.category?.indexOf("electronic") !== -1  
     
@@ -30,7 +32,6 @@ function Electronics() {
 
   return (
     <Layout>
-        {dataElectronics.length < 1 && <EmptyCategory/>}
     <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
         {dataElectronics?.map((product) => (
       <Card 
@@ -44,8 +45,10 @@ function Electronics() {
       />
       ))}
     </div>
-
+    {!globalData.error && !globalData.isLoading && dataElectronics.length < 1 ? <EmptyCategory/> : ""}
+    {globalData.error  && <ErrorComponent/>}
     {isProductDetailOpen && <ProductDetail/>}
+    {globalData.isLoading  && <LoadingComponent/>} 
   </Layout>
   )
 }

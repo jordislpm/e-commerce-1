@@ -38,7 +38,7 @@ function ProductDetail( {product}:ProductDetailProps) {
         </figure>
             <p className='flex flex-col p-2'>
                 <span className='font-medium text-2xl  mb-1'>
-                   ${productToShow?.price} 
+                   ${productToShow?.price?.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
                 </span>
                 <span className='font-medium text-md'>
                    {productToShow?.title} 

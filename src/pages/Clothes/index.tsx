@@ -5,6 +5,8 @@ import { useContextProducts } from "../../Hooks/useContextProducts"
 import { useEffect, useState } from "react"
 import { ProductProps } from "../../interfaces/Product"
 import EmptyCategory from "../../components/EmptyCategory"
+import ErrorComponent from "../../components/ErrorComponent"
+import LoadingComponent from "../../components/LoadingComponent"
 
  
 function Clothes() {
@@ -16,7 +18,7 @@ function Clothes() {
         setGlobalData
     }=useContextProducts()
 
-   const dataClothes = globalData.filter((product)=>{
+   const dataClothes = globalData?.data.filter((product)=>{
     
         if (product.category?.indexOf("clothe") !== -1
         || product.category?.indexOf("men's clothing") !== -1
@@ -28,10 +30,13 @@ function Clothes() {
 
     const [data, setData] = useState<ProductProps[]>([]) 
 
-
+if(globalData.error){
+  console.log(globalData.error)
+  console.log(globalData.isLoading)
+  console.log(globalData.data)
+}
   return (
     <Layout>
-        {dataClothes.length < 1 && <EmptyCategory/>}
     <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
         {dataClothes?.map((product) => (
       <Card 
@@ -44,8 +49,10 @@ function Clothes() {
       id={product.id}
       />
       ))}
-    </div>
-
+    </div>  
+    {!globalData.error && !globalData.isLoading && dataClothes.length < 1 ? <EmptyCategory/> : ""}
+    {globalData.error  && <ErrorComponent/>}   
+    {globalData.isLoading  && <LoadingComponent/>} 
     {isProductDetailOpen && <ProductDetail/>}
   </Layout>
   )

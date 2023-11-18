@@ -5,14 +5,19 @@ import { useContextProducts } from './useContextProducts';
 export function useDataApiFakeStore(url: string) {
 
   const [data, setData] = useState<null|ProductProps[]>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   // const [data,setData]= useState<null|ProductProps[]>(null);
 
 const{setGlobalData}=useContextProducts()
   
   useEffect(() => {
+    setIsLoading(true)
+    setGlobalData((prevMyState)=>({...prevMyState, isLoading:true}))
+
+
     const fetchData = async () => {
+
       try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -32,16 +37,18 @@ const{setGlobalData}=useContextProducts()
         });
 
         setData(resultMap);
-        setGlobalData(resultMap)
+        setGlobalData((prevMyState)=>({...prevMyState, data:resultMap}))
       } catch (err) {
         // setError(err.message as string);
         setError("Error")
+        setGlobalData((prevMyState)=>({...prevMyState, error:"Error"}))
       } finally {
         setIsLoading(false);
+        setGlobalData((prevMyState)=>({...prevMyState, isLoading:false}))
       }
     };
-
-    fetchData();
+      fetchData();  
+ 
   }, [url, setGlobalData]);
 
   // let data = null;

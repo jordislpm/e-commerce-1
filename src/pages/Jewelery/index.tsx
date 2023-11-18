@@ -5,6 +5,8 @@ import { useContextProducts } from "../../Hooks/useContextProducts"
 import { useEffect, useState } from "react"
 import { ProductProps } from "../../interfaces/Product"
 import EmptyCategory from "../../components/EmptyCategory"
+import ErrorComponent from "../../components/ErrorComponent"
+import LoadingComponent from "../../components/LoadingComponent"
 
  
 function Jewelery() {
@@ -16,7 +18,7 @@ function Jewelery() {
         setGlobalData
     }=useContextProducts()
 
-   const dataJewelery = globalData.filter((product)=>{
+   const dataJewelery = globalData.data.filter((product)=>{
 
         if (product.category?.indexOf("jewelery") !== -1){
             return true
@@ -28,7 +30,6 @@ function Jewelery() {
 
   return (
     <Layout>
-        {dataJewelery.length < 1 && <EmptyCategory/>}
     <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
         {dataJewelery?.map((product) => (
       <Card 
@@ -42,8 +43,10 @@ function Jewelery() {
       />
       ))}
     </div>
-
+    {!globalData.error && !globalData.isLoading && dataJewelery.length < 1 ? <EmptyCategory/> : ""}
+    {globalData.error  && <ErrorComponent/>}
     {isProductDetailOpen && <ProductDetail/>}
+    {globalData.isLoading  && <LoadingComponent/>} 
   </Layout>
   )
 }

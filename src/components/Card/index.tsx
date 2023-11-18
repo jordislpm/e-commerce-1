@@ -67,7 +67,7 @@ useEffect(()=>{
            {cutTitle}
                
             </span>
-            <span className='text-lg font-medium'>${price}</span>
+            <span className='text-lg font-medium'>${price?.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
         </p>
     </div>
   )

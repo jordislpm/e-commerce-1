@@ -5,6 +5,8 @@ import { useContextProducts } from "../../Hooks/useContextProducts"
 import { useEffect, useState } from "react"
 import { ProductProps } from "../../interfaces/Product"
 import EmptyCategory from "../../components/EmptyCategory"
+import ErrorComponent from "../../components/ErrorComponent"
+import LoadingComponent from "../../components/LoadingComponent"
 
  
 function Toys() {
@@ -16,7 +18,7 @@ function Toys() {
         setGlobalData
     }=useContextProducts()
 
-   const dataToys = globalData.filter((product)=>{
+   const dataToys = globalData?.data.filter((product)=>{
 
      
         if (product.category?.indexOf("toy") !== -1 ){
@@ -29,22 +31,23 @@ function Toys() {
 
   return (
     <Layout>
-        {dataToys.length < 1 && <EmptyCategory/>}
-    <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
-        {dataToys?.map((product) => (
-      <Card 
-      product={product}
-      key={product.id}
-      title={product.title}
-      price={product.price}
-      image={product.image}
-      category={product.category}
-      id={product.id}
-      />
-      ))}
-    </div>
-
-    {isProductDetailOpen && <ProductDetail/>}
+      <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
+          {dataToys?.map((product) => (
+        <Card 
+        product={product}
+        key={product.id}
+        title={product.title}
+        price={product.price}
+        image={product.image}
+        category={product.category}
+        id={product.id}
+        />
+        ))}
+      </div>
+      {!globalData.error && !globalData.isLoading && dataToys.length < 1 ? <EmptyCategory/> : ""}
+      {globalData.error  && <ErrorComponent/>}
+      {isProductDetailOpen && <ProductDetail/>}
+      {globalData.isLoading  && <LoadingComponent/>} 
   </Layout>
   )
 }

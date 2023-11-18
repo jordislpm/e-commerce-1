@@ -39,3 +39,9 @@ export interface  orderProducts {
     totalProducts: number,
     totalPrice:number
 }
+
+export interface DataProps {
+    data: ProductProps[] | []; 
+    isLoading: boolean;
+    error: string | null;
+  }

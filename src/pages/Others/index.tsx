@@ -5,6 +5,8 @@ import { useContextProducts } from "../../Hooks/useContextProducts"
 import { useEffect, useState } from "react"
 import { ProductProps } from "../../interfaces/Product"
 import EmptyCategory from "../../components/EmptyCategory"
+import ErrorComponent from "../../components/ErrorComponent"
+import LoadingComponent from "../../components/LoadingComponent"
 
  
 function Others() {
@@ -29,7 +31,7 @@ function Others() {
 
 
 
-   const dataOthers = globalData.filter((product)=>{
+   const dataOthers = globalData?.data.filter((product)=>{
 
     if (product.category){
       return !categories.includes(product.category?.toLocaleLowerCase())
@@ -41,7 +43,6 @@ function Others() {
 
   return (
     <Layout>
-        {dataOthers.length < 1 && <EmptyCategory/>}
     <div className="grid gap-1 grid-cols-4 w-full max-w-screen-lg">
         {dataOthers?.map((product) => (
       <Card 
@@ -55,8 +56,10 @@ function Others() {
       />
       ))}
     </div>
-
+    {!globalData.error && !globalData.isLoading && dataOthers.length < 1 ? <EmptyCategory/> : ""}
+    {globalData.error  && <ErrorComponent/>}  
     {isProductDetailOpen && <ProductDetail/>}
+    {globalData.isLoading  && <LoadingComponent/>} 
   </Layout>
   )
 }

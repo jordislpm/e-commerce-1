@@ -33,7 +33,7 @@ const [isInCart, setIsInCart]= useState<boolean>(false)
             isInCart = shoppingCart?.filter(item => item.id === product.id).length > 0
         }
         if(isInCart){
-           return
+           alert("This product is alredy in the cart")
         } else{
             addProductToCart(product)
             if(isCheckoutSideMenuOpen){

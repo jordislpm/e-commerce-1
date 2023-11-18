@@ -20,6 +20,7 @@ function CheckoutSideMenu( {title, id, category, price, description, image}:Chec
         shoppingCart,
         setShoppingCart,
         setOrder,
+        setCount,
         order}=useContextProducts()
 
 
@@ -41,6 +42,7 @@ function CheckoutSideMenu( {title, id, category, price, description, image}:Chec
 setOrder([...order, orderToAdd])
 console.log(order)
 setShoppingCart([])
+setCount(0)
 } else{
     alert("Add products in your order before")
 }
@@ -81,7 +83,9 @@ setShoppingCart([])
                     >${totalPrice(shoppingCart).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </span>
             </p>
-            <button className="w-full bg-amazonOrange py-3 my-2 text-white  rounded-lg" onClick={handleOrderCheckout}>
+            <button 
+            className="w-full bg-amazonOrange py-3 my-2 text-white  rounded-lg" 
+            onClick={handleOrderCheckout}>
                 Checkout
             </button>
         </div>
