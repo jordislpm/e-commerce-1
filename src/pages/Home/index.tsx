@@ -12,7 +12,6 @@ const Home = () => {
 
   
     const {globalData, isProductDetailOpen, isCheckoutSideMenuOpen}=useContextProducts()
-  console.log(globalData);
   return (
     <Layout>
       {globalData.isLoading  && <LoadingComponent/>} 
