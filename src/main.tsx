@@ -8,9 +8,7 @@ import { MyContextProductProvider} from './context/contextProducts/index.tsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
     <MyContextProductProvider>
     <App />
     </MyContextProductProvider>
-  </React.StrictMode>,
 )
